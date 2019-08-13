@@ -1,0 +1,49 @@
+<html>
+<head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+          <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<div class="card grey lighten-2">
+
+<div class="card-tabs">
+    <ul class="tabs tabs-fixed-width tabs-transparent">
+      <li class="tab">
+        <a routerLink='/login' routerLinkActive='active'>Sign In</a>
+      </li>
+      <li class="tab">
+        <a  routerLink='/register' routerLinkActive='active'>Sign Up</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-content white">
+      <h2>Login</h2>
+    <div class="row">
+<form [formGroup]="loginForm" class="customer-account1" (ngSubmit)="onSubmit()">
+    <div class="form-group ">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary btn-block">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
+        <!-- <a routerLink="/register" class="btn btn-link">Register</a> -->
+    </div>
+</form>
+</div>
+</div>
+</div>
+</html>
